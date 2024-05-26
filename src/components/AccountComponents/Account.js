@@ -17,11 +17,11 @@ export default function Account() {
     return (
         <div>
             <AccountNavbar />
-            <div className='row'>
-                <div className='col-md-3'>
+            <div className='row mx-4'>
+                <div className='col-md-2'>
                     <CompanyAndTools />
                 </div>
-                <div className='col-md-9'>
+                <div className='col-md-10'>
                     <Routes>
                         <Route exact path="/randomSelection" element={< RandomSelection />} />
                         <Route exact path="/outstandingInvoices" element={< OutstandingInvoice />} />

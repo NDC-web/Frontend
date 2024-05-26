@@ -28,7 +28,7 @@ function App() {
         <Router>
           <div className='roboto-condensed-font'>
             <Navbar />
-            <div className='container roboto-condensed-font'>
+            <div className='roboto-condensed-font'>
               <Routes>
                 <Route exact path="/" element={<Home />} />
                 <Route exact path="/about" element={<About />} />

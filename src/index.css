@@ -266,3 +266,30 @@ code {
   padding-left: 10px;
 
 }
+
+
+.btn.completed {
+  position: relative;
+  padding-left: 2rem; /* Adjust as needed */
+}
+
+.btn.completed .fa-check-circle {
+  position: absolute;
+  left: 0.5rem; /* Adjust as needed */
+  color: green; /* Change the color as needed */
+}
+
+.btn.disabled {
+  pointer-events: none;
+  opacity: 0.6; /* Adjust as needed */
+}
+
+
+.ql-container {
+  min-height: 350px; 
+}
+
+.ql-editor {
+  padding: 10px; 
+}
+

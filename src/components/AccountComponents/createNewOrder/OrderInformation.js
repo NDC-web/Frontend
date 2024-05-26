@@ -8,19 +8,30 @@ import { Link } from 'react-router-dom';
 export default function OrderInformation() {
 
     const context = useContext(newOrderContext)
-    const { selectedLocation, selectedPackage, selectedReason, newOrderLocation, newOrderPackage, newOrderReason } = context
+    const { selectedLocation, selectedPackage, selectedReason, newOrderLocation, newOrderPackage, newOrderReason ,HandleNavbarStaus,HandlenavbarCompleted} = context
 
     const handleLocationChange = (event) => {
         newOrderLocation(event.target.value)
+        HandleNavbarStaus(1);
+        HandlenavbarCompleted(0)
     };
 
     const handlePackageChange = (event) => {
         newOrderPackage(event.target.value)
+        HandleNavbarStaus(1);
+        HandlenavbarCompleted(0)
     };
 
     const handleReasonChange = (event) => {
         newOrderReason(event.target.value)
+        HandleNavbarStaus(1);
+        HandlenavbarCompleted(0)
     };
+
+    const handleClick = ()=>{
+        HandleNavbarStaus(2);
+        HandlenavbarCompleted(1)
+    }
 
     console.log(`${selectedLocation}    ${selectedPackage}   ${selectedReason}`)
     return (
@@ -86,7 +97,7 @@ export default function OrderInformation() {
                     </div>
                 </div>
                 <div className='col-md-8 mt-1'>
-                    <div className="container">
+                    <div className="container" style={{height:'300px' , border:'1px solid black', borderRadius : '5px'}}>
                         <h5>Testing Package Details</h5>
 
                         {selectedLocation !== '' &&
@@ -113,14 +124,14 @@ export default function OrderInformation() {
                 </div>
             </div>
 
-            <div className="d-flex">
+            <div className="d-flex mt-2">
                 <div className="p-2 flex-grow-1">
                     <Link type="button" className="btn btn-primary mx-2">Start Over</Link>
                     <Link type="button" className="btn btn-primary mx-2">Close</Link>
                 </div>
                 <div>
 
-                <Link type="button" to = "/account/orderDotDrugTest/participantInformation" className="btn btn-warning">Continue</Link>
+                <Link type="button" to = "/account/orderDotDrugTest/participantInformation" onClick={handleClick} className="btn btn-warning">Continue</Link>
                 </div>
             </div>
 
