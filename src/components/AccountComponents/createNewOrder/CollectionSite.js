@@ -5,7 +5,7 @@ import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Modal, Button, Pagination } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import L from 'leaflet';
 import newOrderContext from '../../../context/newOrder/newOrderContext';
 
@@ -25,9 +25,9 @@ const CollectionSiteMap = () => {
   const [startingLocation, setStartingLocation] = useState({ lat: 40.730, lng: -73.987 });
   const [currentPage, setCurrentPage] = useState(1);
   const sitesPerPage = 5;
-
+  const navigate = useNavigate();
   const context = useContext(newOrderContext)
-  const {HandleNavbarStaus, HandlenavbarCompleted} = context;
+  const {HandleNavbarStaus, HandlenavbarCompleted,reload,newOrderLocation,newOrderPackage,newOrderReason} = context;
 
   console.log(selectedSite)
   // Simulate fetching data from a backend API
@@ -52,6 +52,13 @@ const CollectionSiteMap = () => {
     fetchData();
   }, []);
 
+  useEffect(() => {
+    if(reload === false){
+      navigate("/account/orderDotDrugTest/")
+    }
+    // eslint-disable-next-line
+  },[]);
+
   const handleModalClose = () => setShowModal(false);
   const handleModalShow = () => setShowModal(true);
 
@@ -67,7 +74,11 @@ const CollectionSiteMap = () => {
     HandleNavbarStaus(4)
     HandlenavbarCompleted(3)
   }
-
+  const handleClose = () => {
+    newOrderLocation('');
+    newOrderPackage('');
+    newOrderReason('');
+  }
   const indexOfLastSite = currentPage * sitesPerPage;
   const indexOfFirstSite = indexOfLastSite - sitesPerPage;
   const currentSites = sites.slice(indexOfFirstSite, indexOfLastSite);
@@ -127,7 +138,7 @@ const CollectionSiteMap = () => {
       <div className="d-flex mt-2">
         <div className="p-2 flex-grow-1">
           <Link type="button" className="btn btn-primary mx-2">Start Over</Link>
-          <Link type="button" className="btn btn-primary mx-2">Close</Link>
+          <Link type="button" className="btn btn-primary mx-2" to="/account" onClick={handleClose}>Close</Link>
         </div>
         <div>
 

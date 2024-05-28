@@ -9,20 +9,20 @@ const NewOrderState = (props) => {
     const [navbarStatus, setNavbarStatus] = useState({ a: false, b: true, c: true, d: true, e: true })
     const [navbarCompleted, setNavbarCompleted] = useState({ a: false, b: false, c: false, d: false, e: false })
     const [participantInformation, setParticipantInformation] = useState({
-        FirstName : "",
-        MiddleName : "",
-        LastName  :"",
-        SSN  :"",
-        DOB  :"",
-        Phone1  :"",
-        Phone2  :"",
-        LocationCode  :"",
-        ObservedCollection  :"",
-        Address1  :"",
-        Address2  :"",
-        City  :"",
-        State  :"",
-        Zip  :"",
+        FirstName: '',
+        MiddleName: '',
+        LastName: '',
+        SSN: '',
+        Phone1: '',
+        Phone2: '',
+        LocationCode: '',
+        Address: '',
+        Address2: '',
+        City: '',
+        State: '',
+        Zip: '',
+        Email: '',
+        CC: '',
     })
 
     const newOrderLocation = (event) => {
@@ -40,7 +40,7 @@ const NewOrderState = (props) => {
         setSelectedReason(event);
     };
 
-    
+
 
     const HandleNavbarStaus = (a) => {
         if (a === 1) {
@@ -82,8 +82,10 @@ const NewOrderState = (props) => {
         }
     }
 
+    const [reload, setReload] = useState(false)
+
     return (
-        <NewOrderContext.Provider value={{ selectedLocation, selectedPackage, selectedReason, navbarStatus, navbarCompleted,participantInformation, newOrderLocation, newOrderPackage, newOrderReason, HandleNavbarStaus, HandlenavbarCompleted,setParticipantInformation }}>
+        <NewOrderContext.Provider value={{ selectedLocation, selectedPackage, selectedReason, navbarStatus, navbarCompleted, participantInformation,reload, newOrderLocation, newOrderPackage, newOrderReason, HandleNavbarStaus, HandlenavbarCompleted, setParticipantInformation,setReload }}>
             {props.children}
         </NewOrderContext.Provider>
     )

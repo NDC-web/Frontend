@@ -1,19 +1,25 @@
 // SubmitOrderPage.js
-import React, { useContext } from 'react';
+import React, { useContext,useEffect } from 'react';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import "../../../index.css"
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import newOrderContext from '../../../context/newOrder/newOrderContext';
 
 const SubmitOrder = () => {
-
+    const navigate = useNavigate();
     const context = useContext(newOrderContext)
-    const {selectedPackage, selectedReason,participantInformation,HandleNavbarStaus, HandlenavbarCompleted} = context
+    const {selectedPackage,reload, selectedReason,participantInformation,HandleNavbarStaus, HandlenavbarCompleted} = context
     const handleClick = ()=>{
         HandleNavbarStaus(5);
         HandlenavbarCompleted(4);
     }
+    useEffect(() => {
+        if(reload === false){
+          navigate("/account/orderDotDrugTest/")
+        }
+        // eslint-disable-next-line
+      },[]);
     return (
         <>
             <div className='container my-5'>
@@ -90,7 +96,7 @@ const SubmitOrder = () => {
                     </div>
                     <div>
 
-                        <Link type="button" to="/account/orderDotDrugTest/viewDonorPass" className="btn btn-warning" onClick={handleClick} >Continue</Link>
+                        <Link type="button" to="/account/orderDotDrugTest/viewDonorPass" className="btn btn-warning" onClick={handleClick} disabled>Continue</Link>
                     </div>
                 </div>
             </div>
