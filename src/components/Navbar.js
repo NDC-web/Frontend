@@ -31,22 +31,22 @@ function Navbar() {
                 <div className=" navbar-container container">
                     <div className="container nav-bar">
                         <div className="text-center">
-                            <Link to="/" style={{ textDecoration: 'none' }}><p className="logo" style={{ color: 'rgb(64 135 239)' }}><b>EXPRESS LABS</b></p></Link>
+                            <Link to="/" style={{ textDecoration: 'none' }}><p className="logo" style={{ color: 'rgb(64 135 239)' }}><b>NDC</b></p></Link>
 
                             <p className="logo1">DOT DRUG & ALCOHOL CONSORTIUM</p>
                         </div>
                     </div>
                     <div className="member-box " style={{ textAlign: 'right' }}>
-                        {localStorage.getItem('token') ?
+                        {/* {localStorage.getItem('token') ? */}
                             <form onSubmit={handleAccount}>
                                 <button type="submit" className="btn btn-success">Account</button>
                             </form>
-                            :
+                            {/* : */}
 
                             <form onSubmit={handleLogin}>
                                 <button type="submit" className="btn btn-success">Member Login</button>
                             </form>
-                        }
+                        {/* } */}
                         <p style={{ marginBottom: '0px' }}>986574865655</p>
                         <Link to="mailto:vedprakash182001@gmail.com">vedprakash182001@gmail.com</Link>
 

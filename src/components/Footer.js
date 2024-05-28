@@ -8,7 +8,7 @@ export default function Footer() {
                 <div className="container">
                     <div className="row mt-3">
                         <div className="col-md-2 foot2">
-                            <p>© 2023 Express Labs</p>
+                            <p>© 2023 NDC</p>
                             <Link to="/privacy" style={{textDecoration:'none'}}>Privacy Policy</Link>
                             <p>Design & Development by Ved Prakash</p>
                         </div>
